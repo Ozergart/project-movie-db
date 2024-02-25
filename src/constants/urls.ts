@@ -5,14 +5,16 @@ const search = '/search'
 const discover = '/discover'
 const find = '/find'
 const movie = '/movie'
-const genres = '/genres'
+const genres = '/genre'
 
 const urls = {
     'discover': {
         'movies': discover+movie
     },
     'find': {},
-    'search': {}
+    'search': {},
+    'genres': {
+        'uk':`${genres}${movie}/list?language=uk`}
 }
 
 export {
