@@ -3,6 +3,7 @@ import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {IMovieRes} from "../../interfaces";
 import {useMoviesIds} from "../../hooks";
 import {Genre} from "../Genre/Genre";
+import {Genres} from "../Genre/Genres";
 
 interface IProps extends PropsWithChildren {
     movie:IMovieRes
@@ -22,7 +23,7 @@ const Movie: FC<IProps> = ({movie}) => {
 
    <div>original_title : {original_title}</div>
    <div>title : {title}</div>
-   <div>genre_ids : {genre_ids}</div>
+   <div><Genres genre_ids={genre_ids}/></div>
 
 
    <div>popularity : {popularity}</div>
