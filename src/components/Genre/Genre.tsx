@@ -1,5 +1,6 @@
 import {FC, PropsWithChildren} from 'react';
 
+import css from './Genre&Genres.module.css'
 interface IProps extends PropsWithChildren {
  genre:string
 }
@@ -7,8 +8,8 @@ interface IProps extends PropsWithChildren {
 const Genre: FC<IProps> = ({genre}) => {
 
  return (
-  <div>
-      {genre}
+  <div className={css.Genre}>
+     {genre}
   </div>
  );
 };

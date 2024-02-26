@@ -1,0 +1,15 @@
+.Genres{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.Genre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: snow;
+    background-color: green;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 5px;
+}
