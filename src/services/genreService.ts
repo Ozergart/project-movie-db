@@ -5,21 +5,20 @@ import {IGenre, IGenresRes} from "../interfaces";
 
 const genreService = {
     getAll:():IRes<IGenresRes>=>apiService.get(urls.genres.uk),
-    idsToNames:(ids:number[],massive:string[],allGenres:IGenre[]):void=>{
-        ids.forEach(id=>{
-            allGenres.map(genre=>{
-                if(genre.id === id){
-                    massive.push(genre.name);
-                }
-            })
-        })
+    idsToNames: (ids: number[], massive: string[], allGenres: IGenre[]): void => {
+        ids.forEach(id => {
+            const genre = allGenres.find(genre => genre.id === id);
+            if (genre) {
+                massive.push(genre.name);
+            }
+        });
     },
-    objectToIds:(genres:IGenre[]):number[]=>{
-        const massive:number[] =[]
-        genres.map(genre=>{
-            massive.push(genre.id)
-        })
-        return  massive
+    objectToIds: (genres: IGenre[]): number[] => {
+        return genres.map(genre => genre.id);
+    },
+    nameToId:(name:string,allGenres:IGenre[]):number=>{
+        const genre = allGenres.find((genre) => genre.name === name);
+        return genre.id
     }
 }
 export {

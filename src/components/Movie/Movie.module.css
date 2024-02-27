@@ -8,6 +8,7 @@
     height: 70%;
     border-radius: 15px;
     justify-self: center;
+    transition: 1s;
 }
 .Movie img:hover{
     width: 110%;

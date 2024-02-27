@@ -2,3 +2,41 @@
     display: flex;
     flex-wrap: wrap;
 }
+.pageDivBig{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+.pageDiv{
+    display: flex;
+    padding: 20px;
+}
+.pageDiv button{
+    text-decoration: none;
+    margin: 5px 20px;
+    cursor: default;
+    color: white;
+    background-color: cadetblue;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: 1s;
+    border: none;
+}
+.pageDiv button:hover{
+    background-color: #2e9f66;
+    color: black;
+    font-weight: bold;
+}
+
+.pageDiv p{
+    background-color: red;
+    margin: 5px 20px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: default;
+}

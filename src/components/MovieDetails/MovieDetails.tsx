@@ -45,7 +45,6 @@ const MovieDetails: FC<IProps> = ({movie}) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     };
-    console.log(genres);
 
     return (
         <div className={css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
@@ -63,21 +62,27 @@ const MovieDetails: FC<IProps> = ({movie}) => {
                     <div className={css.genres}>Жанр:<Genres genre_ids={genreService.objectToIds(genres)}/></div>
                     <p>Дата виходу:{release_date}</p>
                     <div>
-                        Країна/Країни:
+                        Країна виробник:
                         {production_countries.map((country, index) => (
-                            <span key={index}>{country.name}    , </span>
+                            <span key={index}>
+                                {country.name}
+                                {index !== production_countries.length - 1 && ", "}
+                            </span>
                         ))}
                     </div>
                     <div>
                         Компанія виробник:
                         {production_companies.map((company,index:number)=>(
-                            <span key={index}>{company.name} ,</span>
+                            <span key={index}>
+                                {company.name}
+                                {index !== production_companies.length - 1 && ", "}
+                            </span>
                             )
 
                         )}
                     </div>
 
-                    <p>Бюджет: {budget}</p>
+                    {budget>0?(<p>Бюджет: {budget}</p>):null}
                     <p>Назва оригіналу:{original_title}</p>
                     <p>{overview}</p>
                 </div>

@@ -1,0 +1,9 @@
+.neutral{
+    background-color: rgb(128, 128, 128);
+}
+.added{
+    background-color: green;
+}
+.removed{
+    background-color: red;
+}

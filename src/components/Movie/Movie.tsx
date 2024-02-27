@@ -21,7 +21,6 @@ const Movie: FC<IProps> = ({movie}) => {
         inactiveFillColor: '#fbf1a9'
     }
     let navigate = useNavigate();
-    console.log(genre_ids);
     return (
   <div className={css.Movie}>
     <div>{}</div>
