@@ -1,5 +1,5 @@
-import {FC, PropsWithChildren, useState} from 'react';
-
+import {FC, PropsWithChildren} from 'react';
+import {Link, useNavigate} from "react-router-dom";
 
 import css from './Movie.module.css'
 import {IMovieRes} from "../../interfaces";
@@ -20,24 +20,20 @@ const Movie: FC<IProps> = ({movie}) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     }
-
+    let navigate = useNavigate();
 
     return (
   <div className={css.Movie}>
     <div>{}</div>
-      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt=""/>
+        <div>id:{id}</div>
+      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`постер фільму ${title}`} onClick={()=>navigate(`/movieDetails/${id}`)}/>
 
-   {/*/!*<div>original_title : {original_title}</div>*!/*/}
+
       <div><Genres genre_ids={genre_ids}/></div>
-      <div>Назва : {title}</div>
-    <Rating orientation={"horizontal"} value={3} radius={"small"} className={css.stars} readOnly={true}/>
 
-   {/* <div>vote: {vote_average}</div>*/}
-   {/*<div>popularity : {popularity}</div>*/}
+    <Rating orientation={"horizontal"} value={vote_average/2} radius={"small"}   readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
+      <p>Всього оцінок {vote_count}, середня {(vote_average/2).toFixed(2)}</p>
 
-   <div>release_date : {release_date}</div>
-   {/*<div>vote_count : {vote_count}</div>*/}
-   {/*<div>vote_average : {vote_average}</div>*/}
 
   </div>
  );

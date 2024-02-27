@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+
+import css from "./Movies.module.css"
 import {IMovie, IMovieRes} from "../../interfaces";
 import {movieService} from "../../services";
 import {useSearchParams} from "react-router-dom";
@@ -25,7 +27,7 @@ const Movies = () => {
         }))
     }, [page]);
     return (
-        <div>
+        <div className={css.Movies}>
             {movies.map(movie=><Movie key={movie.id} movie={movie}/>)}
         </div>
     );

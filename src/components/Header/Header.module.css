@@ -1,5 +1,5 @@
 .logo{
-    background-color: black;
+    background-color: white;
     width: 200px;
     height: 50px;
 }
@@ -7,10 +7,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 150px;
-    background-color: darkslateblue;
+    height: 15vh;
+    background-color: #84CEEB;
 }
 .links{
-    display: flex;
+    display: flex
+
 
 }
