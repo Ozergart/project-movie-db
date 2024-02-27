@@ -1,11 +1,12 @@
 import {ICompanie} from "./ICompanie";
 import {IContry} from "./IContry";
 import {ILanguage} from "./ILanguage";
+import {IGenre} from "./IGenre";
 
 export interface IMovieBig{
     adult:boolean,
     backdrop_path:string,
-    genre_ids:number[],
+    genres:IGenre[],
     id:number,
     belongs_to_collection:{id:number,name:string,poster_path:string,backdrop_path:string}|null,
     original_language:string,

@@ -10,8 +10,8 @@
     display: flex;
     justify-content: space-between;
 }
-.starsCont{
-
+.starsCont p{
+    font-size: 13px;
 }
 .bigCont{
 display: flex;
@@ -26,7 +26,22 @@ display: flex;
 .smallCont{
     margin: 40px;
     width: 40vw;
+    border-radius: 30px;
     background: rgb(86,128,233);
-    background: radial-gradient(circle, rgba(86,128,233,0.85) 75%, rgba(0,0,0,0.19371498599439774) 100%);
+    background: radial-gradient(circle, rgba(86,128,233,0.85) 65%, rgba(125,157,238,0.6) 80%, rgba(164,186,243,0.3) 90%, rgba(255,255,255,0) 100%);
     padding: 30px;
+}
+.smallCont>p{
+    margin-bottom: 30px;
+    color: snow;
+    font-size: 20px;
+}
+.smallCont>div{
+    margin-bottom: 30px;
+    color: snow;
+    font-size: 20px;
+}
+.genres{
+    display: flex;
+    align-items: center;
 }

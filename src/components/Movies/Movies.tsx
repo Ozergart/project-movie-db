@@ -8,15 +8,15 @@ import {Movie} from "../Movie/Movie";
 
 const Movies = () => {
 
-    const [query, setQuery] = useSearchParams();
-    const page:number = +query.get('page')
+    const [query, setQuery] = useSearchParams({page:'1'});
+    const pageURL:number = +query.get('page')
 
-    const [result, setResult] = useState<IMovie>({results:null,page:null,total_pages:null,total_results:null})
+    const [result, setResult] = useState<IMovie>({results:null, page:null, total_pages:null,total_results:null})
     const [movies, setMovies] = useState<IMovieRes[]>([])
     useEffect(() => {
-        movieService.getAll(page|| 1).then(({data})=>
+        movieService.getAll(pageURL).then(({data})=>
             setResult(()=>{
-            const {results,page,total_results,total_pages} = data
+            const {results,page ,total_results,total_pages} = data
                 setMovies(results)
             return{
                 results,
@@ -25,10 +25,16 @@ const Movies = () => {
                 total_pages
             }
         }))
-    }, [page]);
+    }, [pageURL]);
+    const next = ():void=>{
+        setQuery('page': ((+query.get("page"))+1).toString())
+    }
     return (
         <div className={css.Movies}>
+            <button>prev</button>
+            <button>next</button>
             {movies.map(movie=><Movie key={movie.id} movie={movie}/>)}
+
         </div>
     );
 };

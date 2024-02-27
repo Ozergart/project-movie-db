@@ -1,5 +1,5 @@
 import {FC, PropsWithChildren} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 import css from './Movie.module.css'
 import {IMovieRes} from "../../interfaces";
@@ -21,17 +21,13 @@ const Movie: FC<IProps> = ({movie}) => {
         inactiveFillColor: '#fbf1a9'
     }
     let navigate = useNavigate();
-
+    console.log(genre_ids);
     return (
   <div className={css.Movie}>
     <div>{}</div>
-        <div>id:{id}</div>
       <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`постер фільму ${title}`} onClick={()=>navigate(`/movieDetails/${id}`)}/>
-
-
       <div><Genres genre_ids={genre_ids}/></div>
-
-    <Rating orientation={"horizontal"} value={vote_average/2} radius={"small"}   readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
+      <Rating orientation={"horizontal"} value={vote_average/2} radius={"small"}   readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
       <p>Всього оцінок {vote_count}, середня {(vote_average/2).toFixed(2)}</p>
 
 

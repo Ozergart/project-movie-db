@@ -13,6 +13,13 @@ const genreService = {
                 }
             })
         })
+    },
+    objectToIds:(genres:IGenre[]):number[]=>{
+        const massive:number[] =[]
+        genres.map(genre=>{
+            massive.push(genre.id)
+        })
+        return  massive
     }
 }
 export {

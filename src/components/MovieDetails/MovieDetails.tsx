@@ -4,6 +4,8 @@ import css from './MovieDetails.module.css'
 import {IMovieBig} from "../../interfaces";
 import {Rating, RoundedStar} from "@smastrom/react-rating";
 import {Genres} from "../Genre";
+import {genreService} from "../../services";
+
 
 interface IProps extends PropsWithChildren {
 movie:IMovieBig
@@ -13,7 +15,8 @@ const MovieDetails: FC<IProps> = ({movie}) => {
     if (!movie) {
         return <div>Loading...</div>;
     }
-    // <div>Жанр:<Genres genre_ids={genre_ids}/></div>
+
+
 
     const {
         budget,
@@ -28,19 +31,21 @@ const MovieDetails: FC<IProps> = ({movie}) => {
         original_title,
         original_language,
         backdrop_path,
-        genre_ids,
+        genres,
         adult,
         video,
         overview,
         release_date,
         popularity,
     } = movie;
+    console.log(genres);
     const backdrop:string = belongs_to_collection?.backdrop_path || backdrop_path
     const starStyle={
         itemShapes: RoundedStar,
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     };
+    console.log(genres);
 
     return (
         <div className={css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
@@ -55,16 +60,29 @@ const MovieDetails: FC<IProps> = ({movie}) => {
                             <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
                         </div>
                     </div>
-
+                    <div className={css.genres}>Жанр:<Genres genre_ids={genreService.objectToIds(genres)}/></div>
                     <p>Дата виходу:{release_date}</p>
+                    <div>
+                        Країна/Країни:
+                        {production_countries.map((country, index) => (
+                            <span key={index}>{country.name}    , </span>
+                        ))}
+                    </div>
+                    <div>
+                        Компанія виробник:
+                        {production_companies.map((company,index:number)=>(
+                            <span key={index}>{company.name} ,</span>
+                            )
 
+                        )}
+                    </div>
 
-
-                    <p>{original_language}</p>
-                    <p>{original_title}</p>
+                    <p>Бюджет: {budget}</p>
+                    <p>Назва оригіналу:{original_title}</p>
+                    <p>{overview}</p>
                 </div>
             </div>
-            {/*<p>{overview}</p>*/}
+
         </div>
     );
 };
