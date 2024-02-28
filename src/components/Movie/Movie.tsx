@@ -13,7 +13,7 @@ interface IProps extends PropsWithChildren {
 
 const Movie: FC<IProps> = ({movie}) => {
 
-    const {id,backdrop_path,poster_path,original_language,original_title,title,genre_ids,overview,popularity,video,release_date,vote_count,vote_average,adult} = movie
+    const {id,poster_path,title,genre_ids,vote_count,vote_average} = movie
 
     const starStyle={
         itemShapes: RoundedStar,

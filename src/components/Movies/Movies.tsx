@@ -6,19 +6,37 @@ import {movieService} from "../../services";
 import {useSearchParams} from "react-router-dom";
 import {Movie} from "../Movie/Movie";
 import {usePages} from "../../hooks";
-import {GenresSearch} from "../AllGenres/GenresSearch";
+
+
 
 const Movies = () => {
-
-    const [query, setQuery] = useSearchParams({page:'1',idsWith:'18',idsWithout:'24'});
+    const [query, setQuery] = useSearchParams({page:'1',idsWith:'',idsWithout:'',queryParam:''});
     const pageURL:number = +query.get('page')
 
     const [result, setResult] = useState<IMovie>({results:null, page:null, total_pages:null,total_results:null})
     const [movies, setMovies] = useState<IMovieRes[]>([])
 
-    const withGenres:string = query.get('idsWith')
-    const withoutGenres:string = query.get('indWithout')
+    let queryParam:string = ''
+    queryParam = query.get('queryParam')
+
+    let withGenres:string = query.get('idsWith')
+    let withoutGenres:string = query.get('indWithout')
+
+
     useEffect(() => {
+
+        if (query.get('queryParam') && query.get('queryParam').length > 0){
+            movieService.search(pageURL,queryParam).then(({data})=>setResult(()=>{
+                const {results,page ,total_results,total_pages} = data
+                setMovies(results)
+                return{
+                    results,
+                    page,
+                    total_results,
+                    total_pages
+                }
+            }))
+        }else {
         movieService.byGenres(pageURL,withGenres,withoutGenres).then(({data})=>
             setResult(()=>{
             const {results,page ,total_results,total_pages} = data
@@ -29,12 +47,12 @@ const Movies = () => {
                 total_results,
                 total_pages
             }
-        }))
-    }, [pageURL,query,withGenres,withoutGenres]);
+        }))}
+    }, [pageURL, query, queryParam, withGenres, withoutGenres]);
 
 
 
-    const pageDiv:JSX.Element = (
+    const pageDiv:React.ReactElement = (
         <div className={css.pageDivBig}>
         <div className={css.pageDiv}>
             {!(pageURL - 1 === 0)?(<button onClick={() => usePages.change(setQuery,-1)}>Попередня</button>):null}
@@ -51,10 +69,13 @@ const Movies = () => {
 
 
     return (
-        <div className={css.Movies}>
-            {pageDiv}
-            {movies.map(movie=><Movie key={movie.id} movie={movie}/>)}
-            {pageDiv}
+          <div className={css.bigCont}>
+              {movies.length>0?<div className={css.Movies}>{pageDiv}
+                  {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
+                  {pageDiv}
+              </div>:
+              <div className={css.Nothing}>Вибачте  за вашим запитом нічого не знайдено</div>
+              }
         </div>
     );
 };

@@ -17,14 +17,14 @@
     margin: 5px 20px;
     cursor: default;
     color: white;
-    background-color: cadetblue;
+    background-color: purple;
     padding: 5px 10px;
     border-radius: 20px;
     transition: 1s;
     border: none;
 }
 .pageDiv button:hover{
-    background-color: #2e9f66;
+    background-color: rgba(128, 0, 128, 0.4);
     color: black;
     font-weight: bold;
 }
@@ -39,4 +39,14 @@
     align-items: center;
     color: white;
     cursor: default;
+}
+.Nothing{
+    font-size: 50px;
+    justify-self: center;
+    margin-top: 300px;
+}
+.bigCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

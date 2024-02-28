@@ -1,0 +1,14 @@
+.User{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.User img{
+    height: 70px;
+    border-radius: 50px;
+    margin: 10px;
+}
+.User span{
+    font-size: 25px;
+    color: white;
+}

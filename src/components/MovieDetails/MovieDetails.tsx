@@ -23,20 +23,15 @@ const MovieDetails: FC<IProps> = ({movie}) => {
         production_companies,
         production_countries,
         belongs_to_collection,
-        id,
         vote_count,
         vote_average,
         poster_path,
         title,
         original_title,
-        original_language,
         backdrop_path,
         genres,
-        adult,
-        video,
         overview,
-        release_date,
-        popularity,
+        release_date
     } = movie;
     console.log(genres);
     const backdrop:string = belongs_to_collection?.backdrop_path || backdrop_path
@@ -45,6 +40,7 @@ const MovieDetails: FC<IProps> = ({movie}) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     };
+
 
     return (
         <div className={css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>

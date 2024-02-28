@@ -1,7 +1,8 @@
 import React from 'react';
-import {Movies} from "../../components/Movies/Movies";
+import {Movies} from "../../components";
 
-const MoviesPage = () => {
+
+const MoviesPage  = () => {
     return (
         <div>
             <Movies/>

@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
+import React, {FC, PropsWithChildren, useState} from 'react';
 import {useAppContext} from "../../hooks";
 import {useNavigate} from "react-router-dom";
+import css from "./AllGenres.module.css";
 import {GenreSearch} from "./GenreSearch";
+import {stateType} from "../../types";
 
-const GenresSearch = () => {
-    const {allGenres,genresWithout,genresWith} = useAppContext();
+
+interface IProps extends PropsWithChildren {
+    setGenreSearchTrigger:stateType<boolean>
+}
+
+const GenresSearch:FC<IProps> = ({setGenreSearchTrigger}) => {
+    const {allGenres,genresWithout,genresWith,setGenresWithout,setGenresWith} = useAppContext();
 
     const [reset, setReset] = useState(false);
 
@@ -15,17 +22,31 @@ const GenresSearch = () => {
 
 
     const apply = ()=>{
-        navigate(`/movies/?page=2&idsWith=${genresWith}&idsWithout=${genresWithout}`)
+        navigate(`/movies/?page=1&idsWith=${genresWith}&idsWithout=${genresWithout}`)
+        setGenreSearchTrigger(false)
+        setGenresWithout([]);
+        setGenresWith([]);
+    }
+    const close = () => {
+        setGenresWithout([]);
+        setGenresWith([]);
+        setGenreSearchTrigger(false);
     }
 
 
 
 
     return (
-        <div>
-            {allGenres.map(genre=><GenreSearch key={genre.name} genre={genre} reset={reset} setReset={setReset}/>)}
-            <button onClick={apply}>apply</button>
-            <button onClick={resetAllGenres}>reset</button>
+        <div className={css.bigCont}>
+            <div className={css.genresSearch}>
+                <div className={css.smallCont}>{allGenres.map(genre => <GenreSearch key={genre.name} genre={genre} reset={reset}
+                                                        setReset={setReset}/>)}</div>
+                <div className={css.buttonsCont}>
+                    <button onClick={apply}>Шукати</button>
+                    <button onClick={resetAllGenres}>Скинути</button>
+                    <button onClick={close}>Закрити</button>
+                </div>
+            </div>
         </div>
     );
 }

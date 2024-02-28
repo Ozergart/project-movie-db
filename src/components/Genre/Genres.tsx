@@ -24,7 +24,7 @@ const Genres: FC<IProps> = ({genre_ids}) => {
             }
             genreService.idsToNames(genre_ids, genresMassive, allGenres)
             setNGenres(genresMassive)
-        }, [allGenres, genre_ids]);
+        }, [allGenres, genre_ids,genresMassive]);
 
     return (
   <div className={css.Genres}>

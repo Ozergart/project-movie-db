@@ -49,13 +49,13 @@ const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
     return (
         <div>
             {(status === 'neutral') ? (
-                <button onClick={clickNeutral} className={css.neutral}>{genre.name}</button>
+                <button onClick={clickNeutral} className={`${css.neutral} ${css.genre}`}>{genre.name}</button>
             ) : null}
             {(status === 'added') ? (
-                <button onClick={clickAdded} className={css.added}>{genre.name}</button>
+                <button onClick={clickAdded} className={`${css.added} ${css.genre}`}>{genre.name}</button>
             ) : null}
             {(status === 'removed') ? (
-                <button onClick={clickRemoved} className={css.removed}>{genre.name}</button>
+                <button onClick={clickRemoved} className={`${css.removed} ${css.genre}`}>{genre.name}</button>
             ) : null}
 
         </div>
