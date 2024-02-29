@@ -8,10 +8,10 @@ import {Genre} from "./Genre";
 
 interface IProps extends PropsWithChildren {
     genre_ids:number[]
-
+    horisontal:boolean
 }
 
-const Genres: FC<IProps> = ({genre_ids}) => {
+const Genres: FC<IProps> = ({genre_ids,horisontal=true}) => {
 
 
     const {setAllGenres, allGenres} = useAppContext()
@@ -27,7 +27,7 @@ const Genres: FC<IProps> = ({genre_ids}) => {
         }, [allGenres, genre_ids]);
 
     return (
-  <div className={css.Genres}>
+  <div className={horisontal? css.Genres:css.GenresVertical}>
     {nGenres.map(genre=><Genre genre={genre} key={genre}/>)}
   </div>
  );

@@ -22,7 +22,6 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
         return <div>Loading...</div>;
     }
     const {
-        budget,
         production_companies,
         production_countries,
         belongs_to_collection,
@@ -35,10 +34,10 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
         genres,
         overview,
         release_date,
-        imdb_id
     } = movie;
     if(imdb){
         ImdbTrigger = true
+
     }
 
 
@@ -55,31 +54,29 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
             <div className={css.bigCont}>
 
                     <div className={css.posterBlock}>
-
                         <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}/>
+                        <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)} horisontal={false}/></div>
                     </div>
 
                 <div className={darkTheme?css.smallContDark: css.smallCont}>
-                    <div className={css.flex}>
-                        <div className={css.flex}>
-                            <img onClick={()=>navigate(-1)} width="35" height="35" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
-                            <h2>{title}</h2>
 
-                        </div>
+
                         <div className={css.starsCont}>
                             <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
                                    radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
                             <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
                             {ImdbTrigger?imdb.Ratings.map(rating=> (
                                 <div key={rating.Source} className={css.ratings}>
-                                    <p className={css.source}>Рейтинг на  {rating.Source}: </p>
-                                    <Rating className={css.stars} orientation={"horizontal"} value={+rating.Value}
-                                            radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
+                                    <p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>
                                 </div>)):null}
 
                         </div>
+
+                    <div className={css.title}>
+                        <img onClick={()=>navigate(-1)} width="35" height="35" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
+                        <h2>{title}</h2>
                     </div>
-                    <div className={css.genres}>Жанр:<Genres genre_ids={genreService.objectToIds(genres)}/></div>
+                    {original_title !== title?<p>Назва оригіналу:{original_title}</p>:null}
                     <p>Дата виходу:{release_date}</p>
                     <div>
                         Країна виробник:
@@ -101,9 +98,13 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
 
                         )}
                     </div>
+                    {ImdbTrigger?<p>Актори: {imdb.Actors}</p>:null}
+                    {ImdbTrigger?<p>Сценаристи: {imdb.Writer}</p>:null}
+                    {ImdbTrigger?<p>Директор: {imdb.Director}</p>:null}
+                    {ImdbTrigger&&imdb.Awards.length>3?<p>Нагороди: {imdb.Awards}</p>:null}
 
-                    {budget>0?(<p>Бюджет: {budget}</p>):null}
-                    <p>Назва оригіналу:{original_title}</p>
+                    {/*{budget>0?(<p>Бюджет: {budget}</p>):null}*/}
+
                     <p>{overview}</p>
                 </div>
             </div>

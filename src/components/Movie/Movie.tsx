@@ -25,7 +25,7 @@ const Movie: FC<IProps> = ({movie}) => {
   <div className={css.Movie}>
     <div>{}</div>
       <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`постер фільму ${title}`} onClick={()=>navigate(`/movieDetails/${id}`)}/>
-      <div><Genres genre_ids={genre_ids}/></div>
+      <div><Genres genre_ids={genre_ids} horisontal={true}/></div>
       <Rating orientation={"horizontal"} value={vote_average/2} radius={"small"}   readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
       <p>Всього оцінок {vote_count}, середня {(vote_average/2).toFixed(2)}</p>
 
