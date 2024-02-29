@@ -1,4 +1,5 @@
 export * from './apiService'
 export * from './movieService'
 export * from './genreService'
+export * from './themeService'
 export * from './userService'

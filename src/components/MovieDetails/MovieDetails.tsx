@@ -5,19 +5,19 @@ import {IMovieBig} from "../../interfaces";
 import {Rating, RoundedStar} from "@smastrom/react-rating";
 import {Genres} from "../Genre";
 import {genreService} from "../../services";
+import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../hooks";
 
 
 interface IProps extends PropsWithChildren {
 movie:IMovieBig
 }
-
 const MovieDetails: FC<IProps> = ({movie}) => {
+    const {darkTheme} = useAppContext();
+    const navigate = useNavigate();
     if (!movie) {
         return <div>Loading...</div>;
     }
-
-
-
     const {
         budget,
         production_companies,
@@ -43,12 +43,15 @@ const MovieDetails: FC<IProps> = ({movie}) => {
 
 
     return (
-        <div className={css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
+        <div className={darkTheme?css.MovieDetailsDark: css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
             <div className={css.bigCont}>
                 <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}/>
-                <div className={css.smallCont}>
+                <div className={darkTheme?css.smallContDark: css.smallCont}>
                     <div className={css.flex}>
-                        <h2>{title}</h2>
+                        <div className={css.flex}>
+                            <img onClick={()=>navigate(-1)} width="35" height="35" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
+                            <h2>{title}</h2>
+                        </div>
                         <div className={css.starsCont}>
                             <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
                                    radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>

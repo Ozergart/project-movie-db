@@ -11,8 +11,7 @@ interface IProps extends PropsWithChildren {
 }
 
 const GenresSearch:FC<IProps> = ({setGenreSearchTrigger}) => {
-    const {allGenres,genresWithout,genresWith,setGenresWithout,setGenresWith} = useAppContext();
-
+    const {allGenres,genresWithout,genresWith,setGenresWithout,setGenresWith,darkTheme} = useAppContext();
     const [reset, setReset] = useState(false);
 
     const resetAllGenres = () => {
@@ -37,8 +36,8 @@ const GenresSearch:FC<IProps> = ({setGenreSearchTrigger}) => {
 
 
     return (
-        <div className={css.bigCont}>
-            <div className={css.genresSearch}>
+        <div className={darkTheme?css.bigContDark: css.bigCont}>
+            <div className={darkTheme?css.genresSearchDark: css.genresSearch}>
                 <div className={css.smallCont}>{allGenres.map(genre => <GenreSearch key={genre.name} genre={genre} reset={reset}
                                                         setReset={setReset}/>)}</div>
                 <div className={css.buttonsCont}>

@@ -6,6 +6,13 @@
     height: 15vh;
     background-color: #84CEEB;
 }
+.HeaderDark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    background-color: #000000;
+}
 .links{
     display: flex;
     margin-left: 3%;
@@ -25,7 +32,31 @@
     align-items: center;
     color: white;
 }
+.linksDark{
+    display: flex;
+    margin-left: 3%;
+    width: 400px
+}
+.linksDark button{
+    min-height: 10px;
+    width: auto;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #2a1a46;
+    margin: 0 3%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
 .links button:hover{
+    color: red;
+    transition: 1s;
+    border: 1px solid black;
+}
+.linksDark button:hover{
     color: red;
     transition: 1s;
     border: 1px solid black;
@@ -36,13 +67,25 @@
     color: white;
     margin-left: 50px;
 }
+.HeaderDark>a{
+    text-decoration: none;
+    font-size: 35px;
+    color: rgb(255, 195, 103);
+    margin-left: 50px;
+}
 .fastSearch{
     display: flex;
     flex-direction: column;
     overflow: visible;
     position: relative;
     margin: 0 1%;
-
+}
+.fastSearchDark{
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    position: relative;
+    margin: 0 1%;
 }
 .fastSearch input{
     width: 250px;
@@ -53,9 +96,31 @@
     color: black;
     font-size: 16px;
 }
+.fastSearchDark input{
+    width: 250px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    display: flex;
+    align-self: end;
+    color: white;
+    font-size: 16px;
+}
+.fastSearchDark input::placeholder{
+    color: white;
+}
+.fastSearchDark input{
+    background-color: darkslateblue;
+    :focus{
+        outline: none;
+    }
+}
 .fastSearch input:focus{
     outline: none;
 }
+.fastSearchDark input:focus{
+    outline: none;
+}
+
 .fastSearchDiv{
     position: absolute;
     background-color: #8860D0;
@@ -65,6 +130,11 @@
     width: 274px;
     box-sizing: border-box;
     align-self: end;
+    height: 450px;
+    overflow-y: scroll;
+}
+.fastSearchDivDark{
+    background-color: #575757;
 }
 .switch{
     width: 60px;
@@ -75,9 +145,24 @@
     justify-content: space-between;
     margin-left:  2%;
 }
+.switchDark{
+    background: rgb(25,21,81);
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left:  2%;
+}
 .switch2{
     width: 30px;
     height: 30px;
     border-radius: 15px;
     background-color: #8860D0;
+}
+.switch2Dark{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
 }

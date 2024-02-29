@@ -2,6 +2,7 @@ import React, {createContext, FC, PropsWithChildren, useState} from 'react';
 
 import {IGenre} from "../interfaces";
 import {stateType} from "../types";
+import {themeService} from "../services";
 
 
 
@@ -22,7 +23,7 @@ const Context = createContext<{
 }>(null);
 const ContextProvider:FC<IProps> = ({children}) => {
     const [allGenres, setAllGenres] = useState<IGenre[]>([])
-    const [darkTheme, setDarkTheme] = useState<boolean>(false)
+    const [darkTheme, setDarkTheme] = useState<boolean>(themeService.getThemeFromLS||false)
     const [genresWith, setGenresWith] = useState<string[]>([]);
     const [genresWithout, setGenresWithout] = useState<string[]>([]);
 

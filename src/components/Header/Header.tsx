@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import {User} from "../User/User";
 import {Search} from "../Search/Search";
 import {IEvent} from "../../types";
-import {movieService} from "../../services";
+import {movieService, themeService} from "../../services";
 import {IMovieRes} from "../../interfaces";
 import {MovieMini} from "../MovieMini/MovieMini";
 import {useAppContext} from "../../hooks";
@@ -38,27 +38,32 @@ const Header = () => {
     }
     const themeSwitch = ()=>{
         setDarkTheme(prev=>!prev)
+        let now:boolean = themeService.getThemeFromLS()
+        themeService.setThemeToLS(!now)
     }
 
 
 
 
     return (
-        <div className={css.Header}>
+        <div className={darkTheme?css.HeaderDark: css.Header}>
             <Link to={''}><h1>MovieDB</h1></Link>
-            <div className={css.switch}>
+            <div className={darkTheme?css.switchDark:css.switch}>
                 {darkTheme?<img width="30" height="30" src="https://img.icons8.com/emoji/48/crescent-moon-emoji.png" alt="crescent-moon-emoji"/>:null}
-                <div className={css.switch2} onClick={themeSwitch}></div>
+                <div className={darkTheme?css.switch2Dark:css.switch2} onClick={themeSwitch}></div>
                 {!darkTheme?<img className={'sun'} width="30" height="30" src="https://img.icons8.com/officel/16/sun.png" alt="sun"/>:null}
             </div>
-            <div className={css.links}>
+            <div className={darkTheme?css.linksDark:css.linksDark}>
                 <button onClick={search}>Пошук по жанрам</button>
                 <button onClick={searchFilm}>Розширений пошук</button>
             </div>
 
-            <div className={css.fastSearch}>
+            <div className={darkTheme?css.fastSearchDark:css.fastSearch}>
                 <input type="text" onChange={fastSearchValue} id={'input'} placeholder={'Швидкий пошук'}/>
-                {moviesSearch.length>0?<div  onMouseLeave={fastSearchClosing} className={css.fastSearchDiv}>{moviesSearch.map(movie => <MovieMini key={movie.id} movie={movie}/>)}</div>:null}
+                {moviesSearch.length>0?
+                    <div  onMouseLeave={fastSearchClosing} className={darkTheme?css.fastSearchDiv+' '+css.fastSearchDivDark:css.fastSearchDiv}>
+                        {moviesSearch.map(movie => <MovieMini key={movie.id} movie={movie}/>)}
+                    </div>:null}
             </div>
             <User/>
             {genreSearchTrigger?<GenresSearch setGenreSearchTrigger={setGenreSearchTrigger}/>:null}
