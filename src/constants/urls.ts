@@ -17,7 +17,8 @@ const urls = {
        'base': user
     },
     'genres': {
-        'uk':`${genres}${movie}/list?language=uk`}
+        'uk':`${genres}${movie}/list?language=uk`},
+    omdbById:(omDB_Id:string):string=>`https://www.omdbapi.com/?i=${omDB_Id}&apikey=d1defe3b`
 }
 
 export {

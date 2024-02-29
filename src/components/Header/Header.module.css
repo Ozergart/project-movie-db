@@ -95,6 +95,7 @@
     align-self: end;
     color: black;
     font-size: 16px;
+    border: none;
 }
 .fastSearchDark input{
     width: 250px;
@@ -104,6 +105,7 @@
     align-self: end;
     color: white;
     font-size: 16px;
+    border: none;
 }
 .fastSearchDark input::placeholder{
     color: white;
@@ -127,7 +129,7 @@
     top: 100%;
     z-index: 20;
     padding: 10px;
-    width: 274px;
+    width: 270px;
     box-sizing: border-box;
     align-self: end;
     height: 450px;

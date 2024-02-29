@@ -24,4 +24,5 @@ export interface IMovieBig{
     production_countries:IContry[],
     spoken_languages:ILanguage[],
     status:string,
+    imdb_id:string
 }

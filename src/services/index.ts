@@ -1,5 +1,6 @@
 export * from './apiService'
-export * from './movieService'
 export * from './genreService'
+export * from './movieService'
+export * from './omDbService'
 export * from './themeService'
 export * from './userService'
