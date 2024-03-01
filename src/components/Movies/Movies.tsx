@@ -7,6 +7,7 @@ import {useSearchParams} from "react-router-dom";
 import {Movie} from "../Movie/Movie";
 import {usePages} from "../../hooks";
 import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
+import {GenreDeliting} from "../Genres/GenreDeliting";
 
 
 
@@ -74,7 +75,7 @@ const Movies = () => {
               {movies.length>0?<div>
                       <div className={css.MovieHeader}>
                           <div className={css.genreDeliting}>
-
+                            <GenreDeliting query={query} setQuery={setQuery}/>
                           </div>
                           {pageDiv}
                           {!queryParam?<div className={css.sorting}>

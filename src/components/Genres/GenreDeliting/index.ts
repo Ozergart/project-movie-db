@@ -1,1 +1,1 @@
-export * from './GenreDelete'
+export * from './GenreDeliting'
