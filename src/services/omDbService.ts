@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {IRes} from "../types";
 import {urls} from "../constants";
 import {IMdbRes} from "../interfaces";

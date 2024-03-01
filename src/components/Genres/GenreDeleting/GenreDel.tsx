@@ -1,7 +1,7 @@
 import {FC, PropsWithChildren} from 'react';
 import {useSearchParams} from "react-router-dom";
 
-import css from './GenreDeliting.module.css'
+import css from './GenreDeleting.module.css'
 import {genreService} from "../../../services";
 import {useAppContext} from "../../../hooks";
 

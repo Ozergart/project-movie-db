@@ -1,8 +1,8 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
 
 import {MovieDetails} from "../../components";
 import {IMdbRes, IMovieBig} from "../../interfaces";
-import {useParams} from "react-router-dom";
 import {movieService, omDbService} from "../../services";
 
 interface IProps extends PropsWithChildren {

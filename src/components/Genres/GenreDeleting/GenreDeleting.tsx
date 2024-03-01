@@ -1,7 +1,7 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
 
-import css from './GenreDeliting.module.css'
+import css from './GenreDeleting.module.css'
 import {genreService} from "../../../services";
 import {useAppContext} from "../../../hooks";
 import {GenreDel} from "./GenreDel";
@@ -11,7 +11,7 @@ interface IProps extends PropsWithChildren {
     setQuery:SetURLSearchParams
 }
 
-const GenreDeliting: FC<IProps> = ({query}) => {
+const GenreDeleting: FC<IProps> = ({query}) => {
     const [genres, setGenres] = useState<string[]>([])
     const [genres2, setGenres2] = useState<string[]>([])
     const {allGenres} = useAppContext()
@@ -51,4 +51,4 @@ const GenreDeliting: FC<IProps> = ({query}) => {
     );
 };
 
-export {GenreDeliting}
+export {GenreDeleting}

@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
-import {useAppContext} from "../../../hooks";
 import {useNavigate} from "react-router-dom";
+
+import {useAppContext} from "../../../hooks";
 import css from "./AllGenres.module.css";
 import {GenreSearch} from "./GenreSearch";
 import {stateType} from "../../../types";
