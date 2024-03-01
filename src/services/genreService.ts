@@ -1,4 +1,4 @@
-import {SetURLSearchParams} from "react-router-dom";
+
 
 import {apiService} from "./apiService";
 import {urls} from "../constants";
@@ -23,12 +23,16 @@ const genreService = {
         return genre.id
     },
     paramsToString:(query:URLSearchParams, param:string):string[]=>  query.get(param).split(','),
-    genreRemovFromURL:(id:number,query:URLSearchParams,setQuery:SetURLSearchParams,param:string):number[]=> {
+    genreRemovFromURL:(id:number,query:URLSearchParams,param:string):string[]=> {
         const url: string[] = genreService.paramsToString(query, param)
         const index = url.indexOf(id + '')
-        url.slice(index, 1)
-        return url.map(str => +str)
-    }}
+        url.splice(index, 1);
+        return url;
+    },
+    IdsToString:(ids:string[]):string=>{
+        return ids.join(',')
+    }
+}
 
     export {
     genreService

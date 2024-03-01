@@ -9,7 +9,7 @@ interface IProps extends PropsWithChildren {
     setQuery:SetURLSearchParams
 }
 
-const GenreDeliting: FC<IProps> = ({query,setQuery}) => {
+const GenreDeliting: FC<IProps> = ({query}) => {
     const [genres, setGenres] = useState<string[]>([])
     const {allGenres} = useAppContext()
 
@@ -24,7 +24,6 @@ const GenreDeliting: FC<IProps> = ({query,setQuery}) => {
 
     }, [query]);
 
-    console.log(genres);
 
 
     return (

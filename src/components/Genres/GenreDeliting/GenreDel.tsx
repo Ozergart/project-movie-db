@@ -13,9 +13,17 @@ const GenreDel: FC<IProps> = ({genre,added}) => {
         {page:'1',idsWith:'',idsWithout:'',queryParam:'',sort_by:"popularity.desc"});
     const {allGenres} = useAppContext()
     const  id = genreService.nameToId(genre, allGenres)
-    genreService.genreRemovFromURL(id,query,setQuery,added)
+    const remove = ()=>{
+        const idsReady = genreService.genreRemovFromURL(id,query,added);
+        setQuery(prev=>{
+            prev.set(added,genreService.IdsToString(idsReady))
+            return prev
+        })
+    }
+
+
     return (
-        <div onClick={()=>genreService.genreRemovFromURL(id,query,setQuery,added)}>
+        <div onClick={remove}>
             {genre}
         </div>
     );
