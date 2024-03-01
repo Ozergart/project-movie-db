@@ -16,14 +16,17 @@ const User = () => {
     if(!user){
         return <p>Loading</p>
     }
-    const {username,avatar:{gravatar:{hash}}} = user
+    const {username,avatar:{gravatar:{hash}},id} = user
 
 
 
 
     return (
         <div className={darkTheme?css.UserDark:css.User}>
-            <span>{username}</span>
+            <div>
+                <p>{username}</p>
+                <p className={css.id}>id:{id}</p>
+            </div>
             <img src={`https://www.gravatar.com/avatar/${hash}`} alt="avatar error"/>
         </div>
     );

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {GenresSearch} from "../Genres/GenreSearch";
-import {Link} from "react-router-dom";
 import {User} from "../User/User";
 import {Search} from "../Search/Search";
 import {IEvent} from "../../types";
@@ -53,7 +53,7 @@ const Header = () => {
                 <div className={darkTheme?css.switch2Dark:css.switch2} onClick={themeSwitch}></div>
                 {!darkTheme?<img className={'sun'} width="30" height="30" src="https://img.icons8.com/officel/16/sun.png" alt="sun"/>:null}
             </div>
-            <div className={darkTheme?css.linksDark:css.linksDark}>
+            <div className={darkTheme?css.linksDark:css.links}>
                 <button onClick={search}>Пошук по жанрам</button>
                 <button onClick={searchFilm}>Розширений пошук</button>
             </div>

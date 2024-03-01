@@ -1,7 +1,9 @@
 import {FC, PropsWithChildren} from 'react';
+import {useSearchParams} from "react-router-dom";
+
+import css from './GenreDeliting.module.css'
 import {genreService} from "../../../services";
 import {useAppContext} from "../../../hooks";
-import {useSearchParams} from "react-router-dom";
 
 interface IProps extends PropsWithChildren {
     genre:string
@@ -23,8 +25,9 @@ const GenreDel: FC<IProps> = ({genre,added}) => {
 
 
     return (
-        <div onClick={remove}>
+        <div onClick={remove} className={added ==='idsWithout'?css.genreRed:css.genre}>
             {genre}
+            <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/cancel.png" alt="cancel"/>
         </div>
     );
 };

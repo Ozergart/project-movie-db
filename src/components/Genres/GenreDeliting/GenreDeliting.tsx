@@ -1,5 +1,7 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
+
+import css from './GenreDeliting.module.css'
 import {genreService} from "../../../services";
 import {useAppContext} from "../../../hooks";
 import {GenreDel} from "./GenreDel";
@@ -11,27 +13,37 @@ interface IProps extends PropsWithChildren {
 
 const GenreDeliting: FC<IProps> = ({query}) => {
     const [genres, setGenres] = useState<string[]>([])
+    const [genres2, setGenres2] = useState<string[]>([])
     const {allGenres} = useAppContext()
 
 
-    const stringMass = genreService.paramsToString(query,'idsWith')
+    
 
     useEffect(() => {
+        const stringMass = genreService.paramsToString(query,'idsWith')
         const ids:number[]=stringMass.map(string=>+string)
         const genresName: string[] = [];
         genreService.idsToNames(ids, genresName, allGenres);
-        setGenres(genresName);
+        setGenres(genresName)
+        const stringMass2 = genreService.paramsToString(query,'idsWithout')
+        const ids2:number[]=stringMass2.map(string=>+string)
+        const genresName2: string[] = [];
+        genreService.idsToNames(ids2, genresName2, allGenres);
+        setGenres2(genresName2);
 
-    }, [query]);
+    }, [allGenres, query]);
 
 
 
     return (
         <div>
 
-            {genres&&genres.length>0?(<div>
+            {genres2&&genres&&(genres.length>0||genres2.length>0)?(<div className={css.cont}>
                 {genres.map(genre => (
                     <GenreDel key={genre} genre={genre} added={'idsWith'}/>
+                ))}
+                {genres2.map(genre => (
+                    <GenreDel key={"_"+genre} genre={genre} added={'idsWithout'}/>
                 ))}
             </div>):null}
 

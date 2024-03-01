@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {useSearchParams} from "react-router-dom";
 
 import css from "./Movies.module.css"
 import {IMovie, IMovieRes} from "../../interfaces";
 import {movieService} from "../../services";
-import {useSearchParams} from "react-router-dom";
 import {Movie} from "../Movie/Movie";
 import {usePages} from "../../hooks";
 import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
@@ -57,7 +57,7 @@ const Movies = () => {
     const pageDiv:React.ReactElement = (
         <div className={css.pageDivBig}>
         <div className={css.pageDiv}>
-            {!(pageURL - 1 === 0)?(<button onClick={() => usePages.change(setQuery,-1)}>Попередня</button>):null}
+            {/*{!(pageURL - 1 === 0)?(<button onClick={() => usePages.change(setQuery,-1)}>Попередня</button>):null}*/}
             {(pageURL-3>0)?(<button onClick={()=>usePages.change(setQuery,-3)}>{pageURL - 3}</button>):null}
             {(pageURL-2>0)?(<button onClick={()=>usePages.change(setQuery,-2)}>{pageURL - 2}</button>):null}
             {(pageURL-1>0)?(<button onClick={()=>usePages.change(setQuery,-1)}>{pageURL - 1}</button>):null}
@@ -65,7 +65,7 @@ const Movies = () => {
             {(pageURL+1<501)&&(pageURL+1<result.total_pages)?(<button onClick={()=>usePages.change(setQuery,1)}>{pageURL + 1}</button>):null}
             {(pageURL+2<501)&&(pageURL+2<result.total_pages)?(<button onClick={()=>usePages.change(setQuery,2)}>{pageURL + 2}</button>):null}
             {(pageURL+3<501)&&(pageURL+3<result.total_pages)?(<button onClick={()=>usePages.change(setQuery,3)}>{pageURL + 3}</button>):null}
-            {!(pageURL - 500 === 0)&&!(pageURL-result.total_pages===0)?(<button onClick={() => usePages.change(setQuery,1)}>Наступна</button>):null}
+            {/*{!(pageURL - 500 === 0)&&!(pageURL-result.total_pages===0)?(<button onClick={() => usePages.change(setQuery,1)}>Наступна</button>):null}*/}
         </div>
     </div>)
 
@@ -78,17 +78,17 @@ const Movies = () => {
                             <GenreDeliting query={query} setQuery={setQuery}/>
                           </div>
                           {pageDiv}
-                          {!queryParam?<div className={css.sorting}>
+                          <div className={css.sortingCont}>{!queryParam ? <div className={css.sorting}>
                               <p>Сортувати за:</p>
                               <PopularitySorting setQuery={setQuery} query={query}/>
                               <RevenueSorting setQuery={setQuery} query={query}/>
                               <DateSorting setQuery={setQuery} query={query}/>
                               {/* eslint-disable-next-line react/jsx-pascal-case */}
                               <Original_titleSorting setQuery={setQuery} query={query}/>
-                          </div>:null}
+                          </div> : null}</div>
                       </div>
                       <div className={css.Movies}>{movies.map(movie => <Movie key={movie.id} movie={movie}/>)}</div>
-                      {pageDiv}
+                      <div className={css.bottomPages}>{pageDiv}</div>
               </div>:
                   <div className={css.Nothing}>Вибачте  за вашим запитом нічого не знайдено</div>
               }
