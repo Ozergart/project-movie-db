@@ -49,3 +49,17 @@
     justify-content: center;
     align-items: center;
 }
+.MovieHeader{
+    display: flex;
+    justify-content: flex-start;
+}
+.sorting{
+    display: flex;
+    justify-self: flex-start;
+}
+.sorting>p{
+    white-space: nowrap;
+    align-self: center;
+    font-size: 20px;
+    color: rgb(255, 195, 103);
+}

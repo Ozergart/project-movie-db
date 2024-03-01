@@ -1,11 +1,11 @@
 import React, {FC, PropsWithChildren} from 'react';
+import {Rating, RoundedStar} from "@smastrom/react-rating";
+import {useNavigate} from "react-router-dom";
 
 import css from './MovieDetails.module.css'
 import {IMdbRes, IMovieBig} from "../../interfaces";
-import {Rating, RoundedStar} from "@smastrom/react-rating";
-import {Genres} from "../Genre";
+import {Genres} from "../Genres/Genre";
 import {genreService} from "../../services";
-import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../hooks";
 
 
@@ -67,7 +67,8 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
                             <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
                             {ImdbTrigger?imdb.Ratings.map(rating=> (
                                 <div key={rating.Source} className={css.ratings}>
-                                    <p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>
+                                    <p className={css.source}>{rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>
+                                    {/*<p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>*/}
                                 </div>)):null}
 
                         </div>

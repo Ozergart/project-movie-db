@@ -1,8 +1,8 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 
 import css from './Search.module.css'
 import {IEvent, stateType} from "../../types";
-import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../hooks";
 
 interface IProps extends PropsWithChildren {

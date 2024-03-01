@@ -6,21 +6,22 @@ import {movieService} from "../../services";
 import {useSearchParams} from "react-router-dom";
 import {Movie} from "../Movie/Movie";
 import {usePages} from "../../hooks";
+import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
 
 
 
 const Movies = () => {
-    const [query, setQuery] = useSearchParams({page:'1',idsWith:'',idsWithout:'',queryParam:''});
+    const [query, setQuery] = useSearchParams(
+        {page:'1',idsWith:'',idsWithout:'',queryParam:'',sort_by:"popularity.desc"});
     const pageURL:number = +query.get('page')
+    const sorting = query.get('sort_by')
 
     const [result, setResult] = useState<IMovie>({results:null, page:null, total_pages:null,total_results:null})
     const [movies, setMovies] = useState<IMovieRes[]>([])
 
-    let queryParam:string = ''
-    queryParam = query.get('queryParam')
-
-    let withGenres:string = query.get('idsWith')
-    let withoutGenres:string = query.get('indWithout')
+    const queryParam:string = query.get('queryParam')
+    const withGenres:string = query.get('idsWith')
+    const withoutGenres:string = query.get('indWithout')
 
 
     useEffect(() => {
@@ -37,7 +38,7 @@ const Movies = () => {
                 }
             }))
         }else {
-        movieService.byGenres(pageURL,withGenres,withoutGenres).then(({data})=>
+        movieService.byGenres(pageURL,sorting,withGenres,withoutGenres).then(({data})=>
             setResult(()=>{
             const {results,page ,total_results,total_pages} = data
                 setMovies(results)
@@ -48,7 +49,7 @@ const Movies = () => {
                 total_pages
             }
         }))}
-    }, [pageURL, query, queryParam, withGenres, withoutGenres]);
+    }, [pageURL, query, queryParam, withGenres, withoutGenres,sorting]);
 
 
 
@@ -70,11 +71,25 @@ const Movies = () => {
 
     return (
           <div className={css.bigCont}>
-              {movies.length>0?<div className={css.Movies}>{pageDiv}
-                  {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
-                  {pageDiv}
+              {movies.length>0?<div>
+                      <div className={css.MovieHeader}>
+                          <div className={css.genreDeliting}>
+
+                          </div>
+                          {pageDiv}
+                          {!queryParam?<div className={css.sorting}>
+                              <p>Сортувати за:</p>
+                              <PopularitySorting setQuery={setQuery} query={query}/>
+                              <RevenueSorting setQuery={setQuery} query={query}/>
+                              <DateSorting setQuery={setQuery} query={query}/>
+                              {/* eslint-disable-next-line react/jsx-pascal-case */}
+                              <Original_titleSorting setQuery={setQuery} query={query}/>
+                          </div>:null}
+                      </div>
+                      <div className={css.Movies}>{movies.map(movie => <Movie key={movie.id} movie={movie}/>)}</div>
+                      {pageDiv}
               </div>:
-              <div className={css.Nothing}>Вибачте  за вашим запитом нічого не знайдено</div>
+                  <div className={css.Nothing}>Вибачте  за вашим запитом нічого не знайдено</div>
               }
         </div>
     );

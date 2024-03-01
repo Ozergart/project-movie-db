@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import css from './Header.module.css'
-import {GenresSearch} from "../AllGenres";
+import {GenresSearch} from "../Genres/GenreSearch";
 import {Link} from "react-router-dom";
 import {User} from "../User/User";
 import {Search} from "../Search/Search";

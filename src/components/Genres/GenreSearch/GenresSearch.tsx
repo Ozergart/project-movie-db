@@ -1,9 +1,9 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
-import {useAppContext} from "../../hooks";
+import {useAppContext} from "../../../hooks";
 import {useNavigate} from "react-router-dom";
 import css from "./AllGenres.module.css";
 import {GenreSearch} from "./GenreSearch";
-import {stateType} from "../../types";
+import {stateType} from "../../../types";
 
 
 interface IProps extends PropsWithChildren {

@@ -1,8 +1,8 @@
 import {FC, PropsWithChildren} from 'react';
+import {useNavigate} from "react-router-dom";
 
 import css from './MovieMini.module.css'
 import {IMovieRes} from "../../interfaces";
-import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../hooks";
 
 

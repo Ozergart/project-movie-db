@@ -1,14 +1,14 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
 
-import {genreService} from "../../services";
+import {genreService} from "../../../services";
 import css from './Genre&Genres.module.css'
-import {useAppContext} from "../../hooks";
+import {useAppContext} from "../../../hooks";
 import {Genre} from "./Genre";
 
 
 interface IProps extends PropsWithChildren {
     genre_ids:number[]
-    horisontal:boolean
+    horisontal?:boolean
 }
 
 const Genres: FC<IProps> = ({genre_ids,horisontal=true}) => {
@@ -22,8 +22,12 @@ const Genres: FC<IProps> = ({genre_ids,horisontal=true}) => {
             if (allGenres.length === 0) {
                 genreService.getAll().then(({data}) => setAllGenres(data.genres))
             }
-            genreService.idsToNames(genre_ids, genresMassive, allGenres)
-            setNGenres(genresMassive)
+            if(genre_ids){
+                genreService.idsToNames(genre_ids, genresMassive, allGenres)
+                setNGenres(genresMassive)
+            }else {
+                setNGenres(["GenresError"])
+            }
         }, [allGenres, genre_ids]);
 
     return (

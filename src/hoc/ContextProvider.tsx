@@ -29,6 +29,8 @@ const ContextProvider:FC<IProps> = ({children}) => {
 
 
 
+
+
     return (
         <Context.Provider value={{setAllGenres,allGenres,genresWith,genresWithout,setGenresWith,setGenresWithout,setDarkTheme,darkTheme}}>
             {children}
