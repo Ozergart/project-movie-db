@@ -16,7 +16,6 @@ const VoteCountSorting: FC<IProps> = ({setQuery,query}) => {
         if((query.get("sort_by") !== "vote_count.desc")&&(query.get("sort_by") !== "vote_count.asc")){
             setStatus(statuses.neutral)
         }
-
     }, [query]);
 
     const neutralClick =()=>{

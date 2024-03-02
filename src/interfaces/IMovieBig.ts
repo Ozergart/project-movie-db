@@ -1,5 +1,5 @@
 import {ICompanie} from "./ICompanie";
-import {IContry} from "./IContry";
+import {ICountry} from "./ICountry";
 import {ILanguage} from "./ILanguage";
 import {IGenre} from "./IGenre";
 
@@ -21,7 +21,7 @@ export interface IMovieBig{
     vote_count:number,
     budget:number|null,
     production_companies:ICompanie[],
-    production_countries:IContry[],
+    production_countries:ICountry[],
     spoken_languages:ILanguage[],
     status:string,
     imdb_id:string

@@ -16,7 +16,7 @@ const GenreDel: FC<IProps> = ({genre,added}) => {
     const {allGenres} = useAppContext()
     const  id = genreService.nameToId(genre, allGenres)
     const remove = ()=>{
-        const idsReady = genreService.genreRemovFromURL(id,query,added);
+        const idsReady = genreService.genreRemoveFromURL(id,query,added);
         setQuery(prev=>{
             prev.set(added,genreService.IdsToString(idsReady))
             return prev

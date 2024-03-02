@@ -37,7 +37,6 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
     } = movie;
     if(imdb){
         ImdbTrigger = true
-
     }
 
 

@@ -22,12 +22,7 @@ const Search: FC<IProps> = ({setSearchTrigger}) => {
         e.preventDefault()
         setInputValue(e.target.value)
     }
-
     const navigate = useNavigate();
-
-
-
-
 
     const search = () => {
             navigate(`/movies/?page=1&idsWith=&idsWithout=&queryParam=${inputValue}`);

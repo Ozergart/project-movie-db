@@ -23,7 +23,7 @@ const genreService = {
         return genre.id
     },
     paramsToString:(query:URLSearchParams, param:string):string[]=>  query.get(param)?query.get(param).split(','):[],
-    genreRemovFromURL:(id:number,query:URLSearchParams,param:string):string[]=> {
+    genreRemoveFromURL:(id:number, query:URLSearchParams, param:string):string[]=> {
         const url: string[] = genreService.paramsToString(query, param)
         const index = url.indexOf(id + '')
         url.splice(index, 1);

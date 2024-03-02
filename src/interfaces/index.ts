@@ -1,5 +1,5 @@
 export * from './ICompanie'
-export * from './IContry'
+export * from './ICountry'
 export  * from  './IGenre'
 export * from './IGenresRes'
 export * from './ILanguage'
