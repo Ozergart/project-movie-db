@@ -1,4 +1,4 @@
-export * from './ICompanie'
+export * from './ICompany'
 export * from './ICountry'
 export  * from  './IGenre'
 export * from './IGenresRes'
