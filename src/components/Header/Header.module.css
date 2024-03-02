@@ -132,8 +132,9 @@
     width: 270px;
     box-sizing: border-box;
     align-self: end;
-    height: 450px;
+    height: auto;
     overflow-y: auto;
+    max-height: 400px;
 }
 .fastSearchDivDark{
     background-color: #575757;

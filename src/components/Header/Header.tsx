@@ -18,7 +18,7 @@ const Header = () => {
     const [fastSearch, setFastSearch] = useState<string>('')
     const [moviesSearch, setMoviesSearch] = useState<IMovieRes[]>([])
     const {darkTheme,setDarkTheme}=useAppContext()
-    const input = document.getElementById('input') as HTMLInputElement
+    const input = document.getElementById('inputFast') as HTMLInputElement
     const search =()=>{
         setGenreSearchTrigger(true)
     }
@@ -59,7 +59,7 @@ const Header = () => {
             </div>
 
             <div className={darkTheme?css.fastSearchDark:css.fastSearch}>
-                <input type="text" onChange={fastSearchValue} id={'input'} placeholder={'Швидкий пошук'}/>
+                <input type="text" onChange={fastSearchValue} id={'inputFast'} placeholder={'Швидкий пошук'}/>
                 {moviesSearch.length>0?
                     <div  onMouseLeave={fastSearchClosing} className={darkTheme?css.fastSearchDiv+' '+css.fastSearchDivDark:css.fastSearchDiv}>
                         {moviesSearch.map(movie => <MovieMini key={movie.id} movie={movie}/>)}

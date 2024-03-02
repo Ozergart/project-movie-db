@@ -31,7 +31,9 @@
 }
 .genreRed:hover img{
     display: flex;
+    margin-left: 8px;
 }
 .genre:hover img{
     display: flex;
+    margin-left: 8px;
 }
