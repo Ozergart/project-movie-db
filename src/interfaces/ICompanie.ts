@@ -1,5 +1,4 @@
 
-
 export interface ICompanie {
     id:number,
     logo_path:string,

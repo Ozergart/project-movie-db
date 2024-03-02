@@ -16,9 +16,7 @@ const DateSorting: FC<IProps> = ({setQuery,query}) => {
         if((query.get("sort_by") !== "primary_release_date.desc")&&(query.get("sort_by") !== "primary_release_date.asc")){
             setStatus(statuses.neutral)
         }
-
     }, [query]);
-
     const neutralClick =()=>{
         setStatus(statuses.desc)
         setQuery(prev=> {
@@ -26,7 +24,6 @@ const DateSorting: FC<IProps> = ({setQuery,query}) => {
             return prev
         })
     }
-
     const descClick =()=>{
         setStatus(statuses.asc)
         setQuery(prev => {prev.set("sort_by","primary_release_date.asc")
@@ -39,8 +36,6 @@ const DateSorting: FC<IProps> = ({setQuery,query}) => {
         return prev
         })
     }
-
-
     return (
         <div className={css.cont}>
             {status===statuses.neutral?<div onClick={neutralClick} className={css.filter}>датою </div>:null}

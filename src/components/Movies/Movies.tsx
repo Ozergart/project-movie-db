@@ -9,8 +9,6 @@ import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} f
 import {GenreDeleting} from "../Genres/GenreDeleting";
 import {Pagination} from "../Pagination/Pagination";
 
-
-
 const Movies = () => {
     const [query, setQuery] = useSearchParams(
         {page:'1',idsWith:'',idsWithout:'',queryParam:'',sort_by:"popularity.desc"});
@@ -24,9 +22,7 @@ const Movies = () => {
     const withGenres:string = query.get('idsWith')
     const withoutGenres:string = query.get('indWithout')
 
-
     useEffect(() => {
-
         if (query.get('queryParam') && query.get('queryParam').length > 0){
             movieService.search(pageURL,queryParam).then(({data})=>setResult(()=>{
                 const {results,page ,total_results,total_pages} = data

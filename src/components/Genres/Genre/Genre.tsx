@@ -7,7 +7,6 @@ import {useAppContext} from "../../../hooks";
 interface IProps extends PropsWithChildren {
  genre:string
 }
-
 const Genre: FC<IProps> = ({genre}) => {
 
  const {allGenres} = useAppContext();
@@ -21,5 +20,4 @@ const Genre: FC<IProps> = ({genre}) => {
      </div>
  );
 };
-
 export {Genre}

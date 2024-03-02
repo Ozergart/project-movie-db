@@ -41,10 +41,6 @@ const Header = () => {
         let now:boolean = themeService.getThemeFromLS()
         themeService.setThemeToLS(!now)
     }
-
-
-
-
     return (
         <div className={darkTheme?css.HeaderDark: css.Header}>
             <Link to={''}><h1>MovieDB</h1></Link>
@@ -57,7 +53,6 @@ const Header = () => {
                 <button onClick={search}>Пошук по жанрам</button>
                 <button onClick={searchFilm}>Розширений пошук</button>
             </div>
-
             <div className={darkTheme?css.fastSearchDark:css.fastSearch}>
                 <input type="text" onChange={fastSearchValue} id={'inputFast'} placeholder={'Швидкий пошук'}/>
                 {moviesSearch.length>0?

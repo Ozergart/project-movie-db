@@ -51,15 +51,11 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
     return (
         <div className={darkTheme?css.MovieDetailsDark: css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
             <div className={css.bigCont}>
-
-                    <div className={css.posterBlock}>
-                        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}/>
-                        <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)} horisontal={false}/></div>
-                    </div>
-
+                <div className={css.posterBlock}>
+                    <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}/>
+                    <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)} horisontal={false}/></div>
+                </div>
                 <div className={darkTheme?css.smallContDark: css.smallCont}>
-
-
                         <div className={css.starsCont}>
                             <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
                                    radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
@@ -69,9 +65,7 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
                                     <p className={css.source}>{rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>
                                     {/*<p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>*/}
                                 </div>)):null}
-
                         </div>
-
                     <div className={css.title}>
                         <img onClick={()=>navigate(-1)} width="35" height="35" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
                         <h2>{title}</h2>
@@ -102,15 +96,11 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
                     {ImdbTrigger?<p>Сценаристи: {imdb.Writer}</p>:null}
                     {ImdbTrigger?<p>Директор: {imdb.Director}</p>:null}
                     {ImdbTrigger&&imdb.Awards.length>3?<p>Нагороди: {imdb.Awards}</p>:null}
-
                     {/*{budget>0?(<p>Бюджет: {budget}</p>):null}*/}
-
                     <p>{overview}</p>
                 </div>
             </div>
-
         </div>
     );
 };
-
 export {MovieDetails}

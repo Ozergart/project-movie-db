@@ -8,7 +8,6 @@ interface IProps extends PropsWithChildren {
     setQuery: SetURLSearchParams
     query:URLSearchParams
 }
-
 const Original_titleSorting: FC<IProps> = ({setQuery,query}) => {
     const [status, setStatus] = useState<string>(statuses.desc)
 
@@ -18,14 +17,12 @@ const Original_titleSorting: FC<IProps> = ({setQuery,query}) => {
         }
 
     }, [query]);
-
     const neutralClick =()=>{
         setStatus(statuses.desc)
         setQuery(prev=> {
             prev.set("sort_by", "original_title.desc")
             return prev
-        })
-    }
+        })}
     const descClick =()=>{
         setStatus(statuses.asc)
         setQuery(prev => {prev.set("sort_by","original_title.asc")
@@ -38,8 +35,6 @@ const Original_titleSorting: FC<IProps> = ({setQuery,query}) => {
         return prev
         })
     }
-
-
     return (
         <div className={css.cont}>
             {status===statuses.neutral?<div onClick={neutralClick} className={css.filter}><p>назвою оригіналу</p> </div>:null}

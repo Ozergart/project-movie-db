@@ -11,23 +11,17 @@ interface IProps extends PropsWithChildren {
     setReset:stateType<boolean>
 }
 const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
-
-
-
     const {setGenresWithout,setGenresWith} = useAppContext();
     const [status, setStatus] = useState<'added' | 'removed' | 'neutral'>('neutral');
-
     const clickNeutral = () => {
         setStatus('added');
         setGenresWith(prev => [...prev, genre.id.toString()]);
     };
-
     const clickAdded = () => {
         setStatus('removed');
         setGenresWith(prev => prev.filter(id => id !== genre.id.toString()));
         setGenresWithout(prev => [...prev, genre.id.toString()]);
     };
-
     const clickRemoved = () => {
         setStatus('neutral');
         setGenresWithout(prevGenresWithout => prevGenresWithout.filter(id => id !== genre.id.toString()));
@@ -40,12 +34,6 @@ const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
             setReset(false);
         }
     }, [reset]);
-
-
-
-
-
-
     return (
         <div>
             {(status === 'neutral') ? (

@@ -3,10 +3,6 @@ import React, {createContext, FC, PropsWithChildren, useState} from 'react';
 import {IGenre} from "../interfaces";
 import {stateType} from "../types";
 import {themeService} from "../services";
-
-
-
-
 interface IProps extends PropsWithChildren{
 
 }
@@ -27,17 +23,12 @@ const ContextProvider:FC<IProps> = ({children}) => {
     const [genresWith, setGenresWith] = useState<string[]>([]);
     const [genresWithout, setGenresWithout] = useState<string[]>([]);
 
-
-
-
-
     return (
         <Context.Provider value={{setAllGenres,allGenres,genresWith,genresWithout,setGenresWith,setGenresWithout,setDarkTheme,darkTheme}}>
             {children}
         </Context.Provider>
     );
 };
-
 export {
     Context,
     ContextProvider

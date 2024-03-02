@@ -6,20 +6,15 @@ import {userService} from "../../services";
 import {useAppContext} from "../../hooks";
 
 const User = () => {
-
     const {darkTheme} = useAppContext();
     const [user, setUser] = useState<IUser>()
     useEffect(() => {
         userService.get().then(({data})=>setUser(data))
     }, []);
-
     if(!user){
         return <p>Loading</p>
     }
     const {username,avatar:{gravatar:{hash}},id} = user
-
-
-
 
     return (
         <div className={darkTheme?css.UserDark:css.User}>

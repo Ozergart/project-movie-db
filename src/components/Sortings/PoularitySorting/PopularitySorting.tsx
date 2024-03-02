@@ -8,16 +8,13 @@ interface IProps extends PropsWithChildren {
     setQuery: SetURLSearchParams
     query:URLSearchParams
 }
-
 const PopularitySorting: FC<IProps> = ({setQuery,query}) => {
     const [status, setStatus] = useState<string>(statuses.desc)
-
     useEffect(() => {
         if((query.get("sort_by") !== "popularity.desc")&&(query.get("sort_by") !== "popularity.asc")){
             setStatus(statuses.neutral)
         }
     }, [query]);
-
     const neutralClick =()=>{
         setStatus(statuses.desc)
         setQuery(prev=> {

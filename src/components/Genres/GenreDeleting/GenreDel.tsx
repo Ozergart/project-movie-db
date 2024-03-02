@@ -22,8 +22,6 @@ const GenreDel: FC<IProps> = ({genre,added}) => {
             return prev
         })
     }
-
-
     return (
         <div onClick={remove} className={added ==='idsWithout'?css.genreRed:css.genre}>
             {genre}
@@ -31,5 +29,4 @@ const GenreDel: FC<IProps> = ({genre,added}) => {
         </div>
     );
 };
-
 export {GenreDel}

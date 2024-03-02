@@ -9,7 +9,6 @@ import {useAppContext} from "../../hooks";
 interface IProps extends PropsWithChildren {
 movie:IMovieRes
 }
-
 const MovieMini: FC<IProps> = ({movie}) => {
     const {darkTheme} = useAppContext();
     const navigate = useNavigate();
@@ -18,5 +17,4 @@ const MovieMini: FC<IProps> = ({movie}) => {
         <div className={darkTheme?css.MovieMiniDark: css.MovieMini} onClick={()=>navigate(`/movieDetails/${id}`)}>{title}</div>
     );
 };
-
 export {MovieMini}

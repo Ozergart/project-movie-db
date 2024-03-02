@@ -8,10 +8,7 @@ import {movieService, omDbService} from "../../services";
 interface IProps extends PropsWithChildren {
 
 }
-
 const MovieDetailsPage: FC<IProps> = () => {
-
-
     const {movieId} = useParams<string>();
     const [IMDB_res, setIMDB_res] = useState<IMdbRes>()
     const [IMDB_id, setIMDB_id] = useState<string>('')

@@ -5,15 +5,12 @@ import css from './Genre&Genres.module.css'
 import {useAppContext} from "../../../hooks";
 import {Genre} from "./Genre";
 
-
 interface IProps extends PropsWithChildren {
     genre_ids:number[]
     horisontal?:boolean
 }
 
 const Genres: FC<IProps> = ({genre_ids,horisontal=true}) => {
-
-
     const {setAllGenres, allGenres} = useAppContext()
     const [nGenres, setNGenres] = useState<string[]>([])
     let genresMassive:string[] = []
@@ -36,5 +33,4 @@ const Genres: FC<IProps> = ({genre_ids,horisontal=true}) => {
   </div>
  );
 };
-
 export {Genres}

@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Movies} from "../../components";
 
-
 const MoviesPage  = () => {
     return (
         <div>
@@ -10,5 +9,4 @@ const MoviesPage  = () => {
         </div>
     );
 };
-
 export {MoviesPage}

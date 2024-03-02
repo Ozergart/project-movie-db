@@ -28,5 +28,4 @@ const Pagination: FC<IProps> = ({pageURL,setQuery,result}) => {
         </div>
     )
 }
-
 export {Pagination}
