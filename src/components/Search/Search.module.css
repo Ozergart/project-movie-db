@@ -20,6 +20,9 @@
     align-items: center;
     position: absolute;
 }
+.Search form, .SearchDark form{
+    display: flex;
+}
 .Cont{
     height: 100vh;
     width: 100%;
