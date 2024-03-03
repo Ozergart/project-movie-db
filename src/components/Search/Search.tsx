@@ -5,6 +5,7 @@ import css from './Search.module.css'
 import {IEvent, stateType} from "../../types";
 import {useAppContext} from "../../hooks";
 
+
 interface IProps extends PropsWithChildren {
     setSearchTrigger:stateType<boolean>
 }
@@ -22,7 +23,8 @@ const Search: FC<IProps> = ({setSearchTrigger}) => {
         setInputValue(e.target.value)
     }
     const navigate = useNavigate();
-    const search = () => {
+    const search = (event:React.FormEvent) => {
+            event.preventDefault()
             navigate(`/movies/?page=1&idsWith=&idsWithout=&queryParam=${inputValue}`);
             setSearchTrigger(false);
     };
