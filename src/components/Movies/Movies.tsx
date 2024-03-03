@@ -35,7 +35,7 @@ const Movies = () => {
                 }
             }))
         }else {
-        movieService.byGenres(pageURL,sorting,withGenres,withoutGenres).then(({data})=>
+        movieService.getAll(pageURL,sorting,withGenres,withoutGenres).then(({data})=>
             setResult(()=>{
             const {results,page ,total_results,total_pages} = data
                 setMovies(results)
