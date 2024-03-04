@@ -6,12 +6,13 @@ import css from './AllGenres.module.css'
 import {stateType} from "../../../types";
 
 interface IProps extends PropsWithChildren {
-    genre:IGenre
-    reset:boolean
-    setReset:stateType<boolean>
+    genre: IGenre
+    reset: boolean
+    setReset: stateType<boolean>
 }
-const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
-    const {setGenresWithout,setGenresWith} = useAppContext();
+
+const GenreSearch: FC<IProps> = ({genre, reset, setReset}) => {
+    const {setGenresWithout, setGenresWith} = useAppContext();
     const [status, setStatus] = useState<'added' | 'removed' | 'neutral'>('neutral');
     const clickNeutral = () => {
         setStatus('added');
@@ -27,7 +28,7 @@ const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
         setGenresWithout(prevGenresWithout => prevGenresWithout.filter(id => id !== genre.id.toString()));
     };
     useEffect(() => {
-        if(reset){
+        if (reset) {
             setStatus('neutral')
             setGenresWith([])
             setGenresWithout([])
@@ -47,7 +48,6 @@ const GenreSearch: FC<IProps> = ({genre,reset,setReset}) => {
             ) : null}
 
         </div>
-
 
 
     );

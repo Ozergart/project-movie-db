@@ -5,8 +5,8 @@ import {IUser} from "../interfaces";
 
 
 const userService = {
-    get:():IRes<IUser>=>apiService.get(`${urls.user.base}/21028568`)
+    get: (): IRes<IUser> => apiService.get(`${urls.user.base}/21028568`)
 }
 export {
-userService
+    userService
 }

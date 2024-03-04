@@ -9,7 +9,7 @@ const MainLayout = () => {
     const {darkTheme} = useAppContext();
 
     return (
-        <div className={darkTheme?css.MainLayoutDark:css.MainLayout}>
+        <div className={darkTheme ? css.MainLayoutDark : css.MainLayout}>
             <Header/>
             <Outlet/>
         </div>

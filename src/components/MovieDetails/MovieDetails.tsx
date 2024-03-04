@@ -9,12 +9,12 @@ import {genreService} from "../../services";
 import {useAppContext} from "../../hooks";
 
 
-
 interface IProps extends PropsWithChildren {
-    movie:IMovieBig
-    imdb:IMdbRes
+    movie: IMovieBig
+    imdb: IMdbRes
 }
-const MovieDetails: FC<IProps> = ({movie,imdb}) => {
+
+const MovieDetails: FC<IProps> = ({movie, imdb}) => {
     const {darkTheme} = useAppContext();
     const navigate = useNavigate();
     let ImdbTrigger = false
@@ -35,42 +35,45 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
         overview,
         release_date,
     } = movie;
-    if(imdb){
+    if (imdb) {
         ImdbTrigger = true
     }
 
 
-
-    const backdrop:string = belongs_to_collection?.backdrop_path || backdrop_path
-    const starStyle={
+    const backdrop: string = belongs_to_collection?.backdrop_path || backdrop_path
+    const starStyle = {
         itemShapes: RoundedStar,
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     };
 
     return (
-        <div className={darkTheme?css.MovieDetailsDark: css.MovieDetails} style={{ 'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})` }}>
+        <div className={darkTheme ? css.MovieDetailsDark : css.MovieDetails}
+             style={{'backgroundImage': `url(https://image.tmdb.org/t/p/w500${backdrop})`}}>
             <div className={css.bigCont}>
                 <div className={css.posterBlock}>
                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}/>
-                    <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)} horisontal={false}/></div>
+                    <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)}
+                                                        horisontal={false}/></div>
                 </div>
-                <div className={darkTheme?css.smallContDark: css.smallCont}>
-                        <div className={css.starsCont}>
-                            <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
-                                   radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
-                            <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
-                            {ImdbTrigger?imdb.Ratings.map(rating=> (
-                                <div key={rating.Source} className={css.ratings}>
-                                    <p className={css.source}>{rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>
-                                    {/*<p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>*/}
-                                </div>)):null}
-                        </div>
+                <div className={darkTheme ? css.smallContDark : css.smallCont}>
+                    <div className={css.starsCont}>
+                        <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
+                                radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
+                        <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
+                        {ImdbTrigger ? imdb.Ratings.map(rating => (
+                            <div key={rating.Source} className={css.ratings}>
+                                <p className={css.source}>{rating.Source}: </p> <h6
+                                className={css.rate}> {rating.Value}</h6>
+                                {/*<p className={css.source}>Рейтинг на  {rating.Source}: </p> <h6 className={css.rate}> {rating.Value}</h6>*/}
+                            </div>)) : null}
+                    </div>
                     <div className={css.title}>
-                        <img onClick={()=>navigate(-1)} width="35" height="35" src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
+                        <img onClick={() => navigate(-1)} width="35" height="35"
+                             src="https://img.icons8.com/flat-round/64/back--v1.png" alt="back--v1"/>
                         <h2>{title}</h2>
                     </div>
-                    {original_title !== title?<p>Назва оригіналу:{original_title}</p>:null}
+                    {original_title !== title ? <p>Назва оригіналу:{original_title}</p> : null}
                     <p>Дата виходу:{release_date}</p>
                     <div>
                         Країна виробник:
@@ -83,19 +86,18 @@ const MovieDetails: FC<IProps> = ({movie,imdb}) => {
                     </div>
                     <div>
                         Компанія виробник:
-                        {production_companies.map((company,index:number)=>(
-                            <span key={index}>
+                        {production_companies.map((company, index: number) => (
+                                <span key={index}>
                                 {company.name}
-                                {index !== production_companies.length - 1 && ", "}
+                                    {index !== production_companies.length - 1 && ", "}
                             </span>
                             )
-
                         )}
                     </div>
-                    {ImdbTrigger?<p>Актори: {imdb.Actors}</p>:null}
-                    {ImdbTrigger?<p>Сценаристи: {imdb.Writer}</p>:null}
-                    {ImdbTrigger?<p>Директор: {imdb.Director}</p>:null}
-                    {ImdbTrigger&&imdb.Awards.length>3?<p>Нагороди: {imdb.Awards}</p>:null}
+                    {ImdbTrigger ? <p>Актори: {imdb.Actors}</p> : null}
+                    {ImdbTrigger ? <p>Сценаристи: {imdb.Writer}</p> : null}
+                    {ImdbTrigger ? <p>Директор: {imdb.Director}</p> : null}
+                    {ImdbTrigger && imdb.Awards.length > 3 ? <p>Нагороди: {imdb.Awards}</p> : null}
                     {/*{budget>0?(<p>Бюджет: {budget}</p>):null}*/}
                     <p>{overview}</p>
                 </div>

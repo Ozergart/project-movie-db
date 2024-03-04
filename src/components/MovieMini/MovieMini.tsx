@@ -7,14 +7,16 @@ import {useAppContext} from "../../hooks";
 
 
 interface IProps extends PropsWithChildren {
-movie:IMovieRes
+    movie: IMovieRes
 }
+
 const MovieMini: FC<IProps> = ({movie}) => {
     const {darkTheme} = useAppContext();
     const navigate = useNavigate();
-    const {id,title}= movie
+    const {id, title} = movie
     return (
-        <div className={darkTheme?css.MovieMiniDark: css.MovieMini} onClick={()=>navigate(`/movieDetails/${id}`)}>{title}</div>
+        <div className={darkTheme ? css.MovieMiniDark : css.MovieMini}
+             onClick={() => navigate(`/movieDetails/${id}`)}>{title}</div>
     );
 };
 export {MovieMini}

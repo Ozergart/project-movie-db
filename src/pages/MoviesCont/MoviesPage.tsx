@@ -1,11 +1,13 @@
 import React from 'react';
 
 import {Movies} from "../../components";
+import {useAppContext} from "../../hooks";
 
-const MoviesPage  = () => {
+const MoviesPage = () => {
+    const {lang} = useAppContext();
     return (
         <div>
-            <Movies/>
+            {lang === "uk" ? <Movies/> : null}
         </div>
     );
 };

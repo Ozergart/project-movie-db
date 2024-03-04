@@ -1,6 +1,6 @@
 export * from './ICompany'
 export * from './ICountry'
-export  * from  './IGenre'
+export * from './IGenre'
 export * from './IGenresRes'
 export * from './ILanguage'
 export * from './IMdbRes'

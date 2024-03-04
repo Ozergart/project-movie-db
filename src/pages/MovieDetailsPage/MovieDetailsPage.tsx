@@ -8,18 +8,19 @@ import {movieService, omDbService} from "../../services";
 interface IProps extends PropsWithChildren {
 
 }
+
 const MovieDetailsPage: FC<IProps> = () => {
     const {movieId} = useParams<string>();
     const [IMDB_res, setIMDB_res] = useState<IMdbRes>()
     const [IMDB_id, setIMDB_id] = useState<string>('')
     const [movieReady, setMovieReady] = useState<IMovieBig>(null)
     useEffect(() => {
-        movieService.byId(+movieId).then(({data})=>setMovieReady(():IMovieBig=>{
+        movieService.byId(+movieId).then(({data}) => setMovieReady((): IMovieBig => {
             setIMDB_id(data.imdb_id)
-            return  data
+            return data
         }));
-        if (IMDB_id&&IMDB_id.length>0){
-            omDbService.getById(IMDB_id).then(({data})=>setIMDB_res(data))
+        if (IMDB_id && IMDB_id.length > 0) {
+            omDbService.getById(IMDB_id).then(({data}) => setIMDB_res(data))
         }
     }, [IMDB_id, movieId]);
 
